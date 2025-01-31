@@ -1,0 +1,127 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Protected Page</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #00ff99;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        .container {
+            text-align: center;
+            padding: 50px;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 15px 5px rgba(0, 255, 153, 0.5);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes neon {
+            0% {
+                text-shadow: 0 0 5px #00ff99, 0 0 10px #00ff99, 0 0 15px #00ff99, 0 0 20px #00ff99;
+            }
+            100% {
+                text-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff, 0 0 45px #ff00ff, 0 0 60px #ff00ff;
+            }
+        }
+
+        input[type="password"] {
+            padding: 15px;
+            font-size: 1.2rem;
+            background-color: #333;
+            border: none;
+            border-radius: 10px;
+            color: #00ff99;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 300px;
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 255, 153, 0.5);
+        }
+
+        input[type="password"]:focus {
+            background-color: #444;
+            box-shadow: 0 0 15px rgba(0, 255, 153, 0.7);
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #00ff99;
+            color: #121212;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #00cc66;
+        }
+
+        .error, .success {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            display: none;
+        }
+
+        .error {
+            color: #ff00ff;
+        }
+
+        .success {
+            color: #00ff99;
+        }
+    </style>
+    <script type="text/javascript">
+        function checkPassword() {
+            var password = document.getElementById("password").value;
+            var correctPassword = "starboy";  // Replace with your desired password
+            var redirectURL = "https://scontent.xx.fbcdn.net/v/t1.15752-9/474495113_1544304172932662_4482045577925533013_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=0024fc&_nc_ohc=YLauV8O5GtMQ7kNvgEFQLVu&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1gEbRwc4ey5MHDA_62AkzCCuuUwFtqbhocuxX25D8J2JLw&oe=67C38EC0";  // Replace with your image URL
+
+            if (password === correctPassword) {
+                document.getElementById("success-message").style.display = "block";
+                document.getElementById("error-message").style.display = "none";
+                setTimeout(function() {
+                    window.location.href = redirectURL;
+                }, 2000);  // Redirects after 2 seconds
+            } else {
+                document.getElementById("error-message").style.display = "block";
+                document.getElementById("success-message").style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Access Restricted Area</h2>
+        <input type="password" id="password" placeholder="Enter password">
+        <button onclick="checkPassword()">Submit</button>
+        <div id="error-message" class="error">Password Denied. Please try again.</div>
+        <div id="success-message" class="success">Access Granted. Redirecting...</div>
+    </div>
+
+</body>
+</html>
+
+
+
